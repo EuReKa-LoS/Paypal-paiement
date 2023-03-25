@@ -15,7 +15,7 @@ class OperationController extends AbstractController
     private $manager;
     public function __construct(EntityManagerInterface $manager)
     {
-        $this->passerelle = Omnipay::create('Paypal_Rest');
+        $this->passerelle = Omnipay::create('PayPal_Rest');
         $this->passerelle->setClientId($_ENV['PAYPAL_CLIENT_ID']);
         $this->passerelle->setSecret($_ENV['PAYPAL_SECRET_KEY']);
         $this->passerelle->setTestMode(true);
