@@ -33,7 +33,7 @@ class OperationController extends AbstractController
     public function payment(Request $request): Response
     {
         $token=$request->request->get('token');
-        if(!$this->isCsrfTokenValid('myform',$token));
+        if(!$this->isCsrfTokenValid('myform',$token))
         {
             return new Response('Operation non autorisée', Response::HTTP_BAD_REQUEST,
             ['content-type' =>'text/plain']);
@@ -42,7 +42,7 @@ class OperationController extends AbstractController
             'amount'=>$request->request->get('amount'),
             'currency'=>$_ENV['PAYPAL_CURRENCY'],
             'returnUrl'=>'https://127.0.0.1:8000/success',
-            'returnUrl'=>'https://127.0.0.1:8000/error'
+            'cancelUrl'=>'https://127.0.0.1:8000/error'
 
         ))->send();
         
